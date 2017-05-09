@@ -25,7 +25,6 @@ then
     echo "LetsEncrypt cert detected. Symlinking into $PRERFIX/etc/nginx"
     $SUDO rm "$PREFIX"etc/nginx/server.crt 2&> /dev/null
     $SUDO rm "$PREFIX"etc/nginx/server.key 2&> /dev/null
-
     $SUDO ln -s /etc/letsencrypt/live/$WEBSITE/fullchain.pem "$PREFIX"etc/nginx/server.crt
     $SUDO ln -s /etc/letsencrypt/live/$WEBSITE/privkey.pem "$PREFIX"etc/nginx/server.key
 else
@@ -33,5 +32,3 @@ else
     $SUDO cp -p server.crt "$PREFIX"etc/nginx/
     $SUDO cp -p server.key "$PREFIX"etc/nginx/
 fi
-
-$SUDO chmod 600 "$PREFIX"etc/nginx/server.{crt,key}
