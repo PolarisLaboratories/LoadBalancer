@@ -1,4 +1,7 @@
 #!/bin/bash
 
-sudo nginx -s stop
+if [ -f /run/nginx.pid ]
+then
+    sudo nginx -s stop
+fi
 sudo nginx
