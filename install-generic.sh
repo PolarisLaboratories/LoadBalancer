@@ -1,5 +1,7 @@
 #!/bin/bash
 
+CURDIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
+
 if [ $# -lt 2 ]
 then
     echo $#
@@ -29,6 +31,6 @@ then
     $SUDO ln -s /etc/letsencrypt/live/$WEBSITE/privkey.pem "$PREFIX"etc/nginx/server.key
 else
     echo "LetsEncrypt cert NOT detected. Installing self-signed certs"
-    $SUDO cp -p server.crt "$PREFIX"etc/nginx/
-    $SUDO cp -p server.key "$PREFIX"etc/nginx/
+    $SUDO cp -p "$CURDIR"/certs/server.crt "$PREFIX"etc/nginx/
+    $SUDO cp -p "$CURDIR"/certs/server.key "$PREFIX"etc/nginx/
 fi
